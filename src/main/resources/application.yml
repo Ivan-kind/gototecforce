@@ -1,0 +1,17 @@
+server:
+  port: 7777
+  tomcat:
+    uri-encoding: UTF-8
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: true
+
+
+# to common config:
+weather:
+  daysFrom: 28

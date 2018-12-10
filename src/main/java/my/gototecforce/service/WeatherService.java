@@ -1,10 +1,30 @@
 package my.gototecforce.service;
 
+import my.gototecforce.pojo.responce.CityWeather;
+
+import java.util.List;
+
 public interface WeatherService {
 
-    public Object getWeatherInCity(long cityId);
+    /**
+     * Method that find in db weather of city by some time period
+     *
+     * @param cityName city to find
+     * @return
+     */
+    public List<CityWeather> getWeatherInCity(String cityName);
 
-    public Object saveWeatherInCity(long cityId, Object weather);
+    public boolean saveActualWeatherInCity(String cityName);
 
-    public Object getCurrWeatherByAllCities();
+    /**
+     * Method that find and save actual weather for all cities in db
+     */
+    public void saveActualWeatherInAllCity();
+
+    /**
+     * Method that find in db actual weather for all cities
+     *
+     * @return
+     */
+    public List<CityWeather> getCurrWeatherByAllCities();
 }

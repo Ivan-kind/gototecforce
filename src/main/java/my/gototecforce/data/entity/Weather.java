@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class Weather {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long id;
 
@@ -20,6 +20,10 @@ public class Weather {
 
     @Column(name = "CREATED_AT")
     private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
+
+    @ManyToOne (optional=false, cascade=CascadeType.ALL)
+    @JoinColumn(name="city_id")
+    private City city;
 
     public long getId() {
         return id;
@@ -53,6 +57,14 @@ public class Weather {
         this.createdAt = createdAt;
     }
 
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
     @Override
     public String toString() {
         return "Weather{" +
@@ -60,6 +72,7 @@ public class Weather {
                 ", temperature=" + temperature +
                 ", windSpeed=" + windSpeed +
                 ", createdAt=" + createdAt +
+                ", city=" + city +
                 '}';
     }
 }
